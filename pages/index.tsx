@@ -1,6 +1,14 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 
 export default function Home() {
   return (
@@ -18,12 +26,30 @@ export default function Home() {
       </Head>
 
       <main>
-        <Flex justify="space-between">
+        <Flex justify="space-between" mb="36px">
           <Heading color="light.gunmetal">devfinder</Heading>
           <Flex alignItems="center" gap="16px" color="light.queenBlue">
-            Dark <Image src="/moon.svg" width={30} height={30} />
+            Dark{' '}
+            <Image src="/moon.svg" alt="moon icon" width={30} height={30} />
           </Flex>
         </Flex>
+
+        <Flex alignItems="center">
+          <Image
+            src="/icon-search.svg"
+            width={24}
+            height={24}
+            color="light.blueCrayola"
+          />
+          <Input
+            placeholder="Search GitHub username..."
+            height="60px"
+            borderRadius="15px"
+            bgColor="white"
+            border="none"
+          />
+        </Flex>
+
         <div>search</div>
         <div>user card</div>
       </main>
