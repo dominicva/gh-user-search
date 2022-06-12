@@ -1,21 +1,25 @@
 // next.js
 import Head from 'next/head';
 import Image from 'next/image';
+
 // react
 import { useState } from 'react';
+
 // chakra-ui
 import { Box, Flex, Heading } from '@chakra-ui/react';
-// local instance of GitHub API client
+
+// single instance of GitHub API client
 import octoKit from '../lib/octokit';
-// local project components
+
+// project components
 import UserCard from '../components/userCard';
 import Search from '../components/search';
 
-export default function Home() {
+function Home() {
   const [query, setQuery] = useState('');
   const [userResult, setUserResult] = useState({});
 
-  async function getUser(username) {
+  const getUser = async username => {
     try {
       const { data: user } = await octoKit.request('GET /users/{username}', {
         username,
@@ -25,7 +29,14 @@ export default function Home() {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  const handleQueryChange = e => setQuery(e.target.value);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    getUser(query);
+  };
 
   return (
     <Box h="100vh" w="100vw" bgColor="light.ghostWhite" padding="32px 24px">
@@ -46,11 +57,8 @@ export default function Home() {
 
         <Search
           query={query}
-          onQueryChange={e => setQuery(e.target.value)}
-          onSubmit={e => {
-            e.preventDefault();
-            getUser(query);
-          }}
+          onQueryChange={handleQueryChange}
+          onSubmit={handleSubmit}
         />
 
         <UserCard user={userResult} />
@@ -58,3 +66,5 @@ export default function Home() {
     </Box>
   );
 }
+
+export default Home;
