@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-
 import { Box, Flex, Heading, Input, Button } from '@chakra-ui/react';
-
 import { Octokit } from '@octokit/core';
+import UserCard from '../components/userCard';
 
 const auth = process.env.GH_ACCESS_TOKEN;
 
@@ -83,20 +82,7 @@ export default function Home() {
           </Button>
         </Flex>
 
-        <Box>
-          <Flex>
-            {userResult.avatar_url ? (
-              <img
-                src={userResult?.avatar_url}
-                alt="user avatar"
-                width={32}
-                height={32}
-              />
-            ) : null}
-          </Flex>
-        </Box>
-
-        <div>user card</div>
+        <UserCard user={userResult} />
       </main>
 
       <footer></footer>
