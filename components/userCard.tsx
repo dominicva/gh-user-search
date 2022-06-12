@@ -1,9 +1,22 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+// next.js
 import NextImage from 'next/image';
-import UserStats from './userStats';
+
+// chakra-ui
+import { Box, Flex, Text } from '@chakra-ui/react';
+
+// project components
 import UserHeader from './userHeader';
+import UserStats from './userStats';
 
 const UserCard = ({ user }) => {
+  const userMetaData = {
+    locataion: user.location || null,
+    blog: user.blog || null,
+    twitterUsername: user.twitter_username || null,
+    company: user.company || null,
+  };
+  console.log('userMetaData:', userMetaData);
+
   return (
     <Box
       padding="32px 24px"

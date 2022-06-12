@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import { Button, Flex, Input } from '@chakra-ui/react';
 import Image from 'next/image';
 
-const Search = ({ query, onQueryChange, onSubmit }) => {
+const Search = ({ onSubmit }) => {
+  const [query, setQuery] = useState('octokat');
+
+  const handleQueryChange = e => setQuery(e.target.value);
+
   return (
     <Flex
       as="form"
-      onSubmit={onSubmit}
+      onSubmit={e => onSubmit(query, e)}
       alignItems="center"
       height="60px"
       borderRadius="15px"
@@ -28,7 +33,7 @@ const Search = ({ query, onQueryChange, onSubmit }) => {
         _focusVisible={{ border: 'none' }}
         width="calc(100% - 120px)"
         value={query}
-        onChange={onQueryChange}
+        onChange={handleQueryChange}
       />
       <Button
         backgroundColor="light.blueCrayola"

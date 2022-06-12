@@ -16,8 +16,7 @@ import UserCard from '../components/userCard';
 import Search from '../components/search';
 
 function Home() {
-  const [query, setQuery] = useState('');
-  const [userResult, setUserResult] = useState({});
+  const [displayedUser, setDisplayedUser] = useState({});
 
   const getUser = async username => {
     try {
@@ -25,17 +24,15 @@ function Home() {
         username,
       });
 
-      setUserResult(user);
+      setDisplayedUser(user);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleQueryChange = e => setQuery(e.target.value);
-
-  const handleSubmit = e => {
+  const handleSubmit = (username, e) => {
     e.preventDefault();
-    getUser(query);
+    getUser(username);
   };
 
   return (
@@ -55,13 +52,9 @@ function Home() {
           </Flex>
         </Flex>
 
-        <Search
-          query={query}
-          onQueryChange={handleQueryChange}
-          onSubmit={handleSubmit}
-        />
+        <Search onSubmit={handleSubmit} />
 
-        <UserCard user={userResult} />
+        <UserCard user={displayedUser} />
       </main>
     </Box>
   );
