@@ -29,8 +29,8 @@ const UserCard = ({ user }) => {
               <Image
                 src={user.avatar_url}
                 alt="user avatar"
-                width="70px"
-                height="70px"
+                width="80px"
+                height="80px"
                 borderRadius="50%"
               />
             ) : null}
@@ -45,29 +45,52 @@ const UserCard = ({ user }) => {
             >
               {user.name}
             </Heading>
-            <Heading as="h4" fontSize="14px" mb="6px" color="light.blueCrayola">
+            <Heading
+              as="h4"
+              fontSize="14px"
+              lineHeight="25px"
+              mb="6px"
+              color="light.blueCrayola"
+            >
               <a href={`https://github.com/${user.login}`} target="__blank">
                 @{user.login}
               </a>
             </Heading>
-            <h4>Joined {dateJoined}</h4>
+            <Heading as="h5" fontSize="14px" lineHeight="25px">
+              Joined {dateJoined}
+            </Heading>
           </Box>
         </Flex>
         <Box>
-          <Text>{user.bio}</Text>
+          <Text fontSize="14px" lineHeight="25px" mb="24px">
+            {user.bio}
+          </Text>
         </Box>
-        <Flex>
+        <Flex
+          justifyContent="space-around"
+          textAlign="center"
+          padding="18px 16px"
+          mb="24px"
+          bgColor="light.ghostWhite"
+          borderRadius="10px"
+        >
           <Box>
-            <Text>Repos</Text>
-            {user.public_repos}
+            <Text fontSize="13px">Repos</Text>
+            <Text fontSize="16px" fontWeight="bold">
+              {user.public_repos}
+            </Text>
           </Box>
           <Box>
-            <Text>Followers</Text>
-            {user.followers}
+            <Text fontSize="13px">Followers</Text>
+            <Text fontSize="16px" fontWeight="bold">
+              {user.followers}
+            </Text>
           </Box>
           <Box>
-            <Text>Following</Text>
-            {user.following}
+            <Text fontSize="13px">Following</Text>
+            <Text fontSize="16px" fontWeight="bold">
+              {user.following}
+            </Text>
           </Box>
         </Flex>
         <Box>
