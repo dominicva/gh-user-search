@@ -1,20 +1,21 @@
+// next.js
 import Head from 'next/head';
 import Image from 'next/image';
+// react
 import { useState } from 'react';
-import { Box, Flex, Heading, Input, Button } from '@chakra-ui/react';
-import { Octokit } from '@octokit/core';
+// chakra-ui
+import { Box, Flex, Heading } from '@chakra-ui/react';
+// local instance of GitHub API client
+import octoKit from '../lib/octokit';
+// local project components
 import UserCard from '../components/userCard';
 import Search from '../components/search';
-
-const auth = process.env.GH_ACCESS_TOKEN;
 
 export default function Home() {
   const [query, setQuery] = useState('');
   const [userResult, setUserResult] = useState({});
 
   async function getUser(username) {
-    const octoKit = new Octokit({ auth });
-
     try {
       const { data: user } = await octoKit.request('GET /users/{username}', {
         username,

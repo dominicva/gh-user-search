@@ -1,9 +1,7 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import theme from '../lib/theme';
 import '@fontsource/space-mono';
 import 'reset-css';
-
-console.log('theme:', theme);
 
 function MyApp({ Component, pageProps }) {
   return (
