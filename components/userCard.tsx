@@ -8,13 +8,7 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import UserHeader from './userHeader';
 import UserStats from './userStats';
 import cleanUserMetData from '../lib/cleanUserMetaData';
-
-const calcGap = iconWidth => {
-  const w = Number(iconWidth.slice(0, 2));
-  const d = 20 - w;
-  const gap = 18 + d;
-  return `${gap}px`;
-};
+import calcGap from '../lib/calcGap';
 
 const MetaDataRow = ({
   icon,
