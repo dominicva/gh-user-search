@@ -59,6 +59,7 @@ export default function Home() {
         >
           <Image
             src="/icon-search.svg"
+            alt="search icon"
             width={25}
             height={25}
             color="light.blueCrayola"

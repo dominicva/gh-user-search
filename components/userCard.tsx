@@ -1,5 +1,7 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
+import NextImage from 'next/image';
+import UserStats from './userStats';
 
 const formatDate = dateString => {
   const date = new Date(dateString).toDateString();
@@ -66,59 +68,44 @@ const UserCard = ({ user }) => {
             {user.bio}
           </Text>
         </Box>
-        <Flex
-          justifyContent="space-around"
-          textAlign="center"
-          padding="18px 16px"
-          mb="24px"
-          bgColor="light.ghostWhite"
-          borderRadius="10px"
-        >
-          <Box>
-            <Text fontSize="13px">Repos</Text>
-            <Text fontSize="16px" fontWeight="bold">
-              {user.public_repos}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontSize="13px">Followers</Text>
-            <Text fontSize="16px" fontWeight="bold">
-              {user.followers}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontSize="13px">Following</Text>
-            <Text fontSize="16px" fontWeight="bold">
-              {user.following}
-            </Text>
-          </Box>
-        </Flex>
-        <Box>
-          <Text>Location</Text>
-          {user.location}
+
+        <UserStats user={user} />
+
+        <Box display="flex" gap="18px" alignItems="center" mb="16px">
+          <NextImage
+            src="/icon-location.svg"
+            alt="location icon"
+            width="14px"
+            height="20px"
+          />
+          <Text>{user.location ?? 'Not Available'}</Text>
         </Box>
-        <Box>
-          <Text>Blog</Text>
-          <a href={user.blog} target="__blank">
-            {user.blog}
-          </a>
+        <Box display="flex" gap="18px" alignItems="center" mb="16px">
+          <NextImage
+            src="/icon-website.svg"
+            alt="weblink icon"
+            width="20px"
+            height="20px"
+          />
+          <Text>{user.blog || 'Not Available'}</Text>
         </Box>
-        <Box>
-          <Text>Twitter handle</Text>
-          {user.twitter_username ? (
-            <a
-              href={`https://twitter.com/${user.twitter_username}`}
-              target="__blank"
-            >
-              @{user.twitter_username}
-            </a>
-          ) : (
-            'Not available'
-          )}
+        <Box display="flex" gap="18px" alignItems="center" mb="16px">
+          <NextImage
+            src="/icon-twitter.svg"
+            alt="twitter icon"
+            width="20px"
+            height="16px"
+          />
+          <Text>{user.twitter_username ?? 'Not Available'}</Text>
         </Box>
-        <Box>
-          <Text>Works at</Text>
-          {user.company}
+        <Box display="flex" gap="18px" alignItems="center" mb="16px">
+          <NextImage
+            src="/icon-company.svg"
+            alt="company icon"
+            width="20px"
+            height="20px"
+          />
+          <Text>{user.company ?? 'Not Available'}</Text>
         </Box>
       </Flex>
     </Box>
