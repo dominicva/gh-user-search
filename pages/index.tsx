@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Box, Flex, Heading, Input, Button } from '@chakra-ui/react';
 import { Octokit } from '@octokit/core';
 import UserCard from '../components/userCard';
@@ -11,24 +11,19 @@ export default function Home() {
   const [query, setQuery] = useState('');
   const [userResult, setUserResult] = useState({});
 
-  useEffect(() => {
-    if (query.length < 3) return;
-    async function getUser(username) {
-      const octoKit = new Octokit({ auth });
+  async function getUser(username) {
+    const octoKit = new Octokit({ auth });
 
-      try {
-        const { data: user } = await octoKit.request('GET /users/{username}', {
-          username,
-        });
+    try {
+      const { data: user } = await octoKit.request('GET /users/{username}', {
+        username,
+      });
 
-        setUserResult(user);
-      } catch (error) {
-        console.error(error);
-      }
+      setUserResult(user);
+    } catch (error) {
+      console.error(error);
     }
-
-    getUser(query);
-  }, [query]);
+  }
 
   return (
     <Box h="100vh" w="100vw" bgColor="light.ghostWhite" padding="32px 24px">
@@ -48,6 +43,11 @@ export default function Home() {
         </Flex>
 
         <Flex
+          as="form"
+          onSubmit={e => {
+            e.preventDefault();
+            getUser(query);
+          }}
           alignItems="center"
           height="60px"
           borderRadius="15px"
@@ -77,6 +77,7 @@ export default function Home() {
             fontSize="14px"
             h="46px"
             width="84px"
+            _hover={{ backgroundColor: 'light.skyBlue' }}
           >
             Search
           </Button>

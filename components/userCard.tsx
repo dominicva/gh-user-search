@@ -1,39 +1,45 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
-
-/**
- *
- * @ bio
-- email
-- blog
-- created_at
-- followers
-- following
-- id
-- location
-- name
-- public_repos
-- twitter_username
-- login -->
- * @
- */
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
 const UserCard = ({ user }) => {
-  console.log('user:', user);
-
   return (
-    <Box>
+    <Box
+      padding="32px 24px"
+      position="relative"
+      bgColor="white"
+      borderRadius="15px"
+      filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
+    >
       <Flex flexDir="column">
-        {user.avatar_url ? (
-          <img
-            src={user?.avatar_url}
-            alt="user avatar"
-            width={32}
-            height={32}
-          />
-        ) : null}
+        <Flex gap="20px" mb="32px">
+          <Box>
+            {user.avatar_url ? (
+              <Image
+                src={user.avatar_url}
+                alt="user avatar"
+                width="70px"
+                height="70px"
+                borderRadius="50%"
+              />
+            ) : null}
+          </Box>
 
-        <h2>{user.name}</h2>
-        <h3>@{user.login}</h3>
-        <h4>{new Date(user.created_at).toDateString()}</h4>
+          <Box>
+            <Heading
+              as="h3"
+              fontSize="18px"
+              fontWeight="700"
+              color="light.gunmetal"
+            >
+              {user.name}
+            </Heading>
+            <Heading as="h4" fontSize="14px" mb="6px" color="light.blueCrayola">
+              <a href={`https://github.com/${user.login}`} target="__blank">
+                @{user.login}
+              </a>
+            </Heading>
+            <h4>{new Date(user.created_at).toDateString()}</h4>
+          </Box>
+        </Flex>
         <Box>
           <Text>{user.bio}</Text>
         </Box>
@@ -63,7 +69,16 @@ const UserCard = ({ user }) => {
         </Box>
         <Box>
           <Text>Twitter handle</Text>
-          {user.twitter_username ? user.twitter_username : 'Not available'}
+          {user.twitter_username ? (
+            <a
+              href={`https://twitter.com/${user.twitter_username}`}
+              target="__blank"
+            >
+              @{user.twitter_username}
+            </a>
+          ) : (
+            'Not available'
+          )}
         </Box>
         <Box>
           <Text>Works at</Text>
