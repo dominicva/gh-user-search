@@ -1,43 +1,13 @@
-// next.js
-import NextImage from 'next/image';
-
 // chakra-ui
 import { Box, Flex, Text } from '@chakra-ui/react';
 
 // project components
 import UserHeader from './userHeader';
 import UserStats from './userStats';
+import MetaDataRow from './metaDataRow';
+
+// helper(s) from lib dir
 import cleanUserMetData from '../lib/cleanUserMetaData';
-import calcGap from '../lib/calcGap';
-
-const MetaDataRow = ({
-  icon,
-  iconDimensions = { width: '20px', height: '20px' },
-  text,
-}) => {
-  const opacity = text ? 1 : 0.5;
-  const displayedText = text ?? 'Not Available';
-
-  const gap = calcGap(iconDimensions.width);
-
-  return (
-    <Box
-      display="flex"
-      gap={gap}
-      alignItems="center"
-      mb="16px"
-      opacity={opacity}
-    >
-      <NextImage
-        src={`/icon-${icon}.svg`}
-        alt={`${icon} icon`}
-        width={iconDimensions.width}
-        height={iconDimensions.height}
-      />
-      <Text maxW="calc(100% - 80px)">{displayedText}</Text>
-    </Box>
-  );
-};
 
 const UserCard = ({ user }) => {
   const { location, blog, twitterUsername, company } = cleanUserMetData(user);
