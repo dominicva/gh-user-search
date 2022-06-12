@@ -17,6 +17,8 @@ import { Box, Flex, Text } from '@chakra-ui/react';
  * @
  */
 const UserCard = ({ user }) => {
+  console.log('user:', user);
+
   return (
     <Box>
       <Flex flexDir="column">
@@ -34,6 +36,38 @@ const UserCard = ({ user }) => {
         <h4>{new Date(user.created_at).toDateString()}</h4>
         <Box>
           <Text>{user.bio}</Text>
+        </Box>
+        <Flex>
+          <Box>
+            <Text>Repos</Text>
+            {user.public_repos}
+          </Box>
+          <Box>
+            <Text>Followers</Text>
+            {user.followers}
+          </Box>
+          <Box>
+            <Text>Following</Text>
+            {user.following}
+          </Box>
+        </Flex>
+        <Box>
+          <Text>Location</Text>
+          {user.location}
+        </Box>
+        <Box>
+          <Text>Blog</Text>
+          <a href={user.blog} target="__blank">
+            {user.blog}
+          </a>
+        </Box>
+        <Box>
+          <Text>Twitter handle</Text>
+          {user.twitter_username ? user.twitter_username : 'Not available'}
+        </Box>
+        <Box>
+          <Text>Works at</Text>
+          {user.company}
         </Box>
       </Flex>
     </Box>
