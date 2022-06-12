@@ -7,15 +7,46 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 // project components
 import UserHeader from './userHeader';
 import UserStats from './userStats';
+import cleanUserMetData from '../lib/cleanUserMetaData';
+
+const calcGap = iconWidth => {
+  const w = Number(iconWidth.slice(0, 2));
+  const d = 20 - w;
+  const gap = 18 + d;
+  return `${gap}px`;
+};
+
+const MetaDataRow = ({
+  icon,
+  iconDimensions = { width: '20px', height: '20px' },
+  text,
+}) => {
+  const opacity = text ? 1 : 0.5;
+  const displayedText = text ?? 'Not Available';
+
+  const gap = calcGap(iconDimensions.width);
+
+  return (
+    <Box
+      display="flex"
+      gap={gap}
+      alignItems="center"
+      mb="16px"
+      opacity={opacity}
+    >
+      <NextImage
+        src={`/icon-${icon}.svg`}
+        alt={`${icon} icon`}
+        width={iconDimensions.width}
+        height={iconDimensions.height}
+      />
+      <Text maxW="calc(100% - 80px)">{displayedText}</Text>
+    </Box>
+  );
+};
 
 const UserCard = ({ user }) => {
-  const userMetaData = {
-    locataion: user.location || null,
-    blog: user.blog || null,
-    twitterUsername: user.twitter_username || null,
-    company: user.company || null,
-  };
-  console.log('userMetaData:', userMetaData);
+  const { location, blog, twitterUsername, company } = cleanUserMetData(user);
 
   return (
     <Box
@@ -35,42 +66,18 @@ const UserCard = ({ user }) => {
 
         <UserStats user={user} />
 
-        <Box display="flex" gap="18px" alignItems="center" mb="16px">
-          <NextImage
-            src="/icon-location.svg"
-            alt="location icon"
-            width="14px"
-            height="20px"
-          />
-          <Text>{user.location ?? 'Not Available'}</Text>
-        </Box>
-        <Box display="flex" gap="18px" alignItems="center" mb="16px">
-          <NextImage
-            src="/icon-website.svg"
-            alt="weblink icon"
-            width="20px"
-            height="20px"
-          />
-          <Text>{user.blog || 'Not Available'}</Text>
-        </Box>
-        <Box display="flex" gap="18px" alignItems="center" mb="16px">
-          <NextImage
-            src="/icon-twitter.svg"
-            alt="twitter icon"
-            width="20px"
-            height="16px"
-          />
-          <Text>{user.twitter_username ?? 'Not Available'}</Text>
-        </Box>
-        <Box display="flex" gap="18px" alignItems="center" mb="16px">
-          <NextImage
-            src="/icon-company.svg"
-            alt="company icon"
-            width="20px"
-            height="20px"
-          />
-          <Text>{user.company ?? 'Not Available'}</Text>
-        </Box>
+        <MetaDataRow
+          icon="location"
+          iconDimensions={{ width: '14px', height: '20px' }}
+          text={location}
+        />
+        <MetaDataRow icon="website" text={blog} />
+        <MetaDataRow
+          icon="twitter"
+          iconDimensions={{ width: '20px', height: '16px' }}
+          text={twitterUsername}
+        />
+        <MetaDataRow icon="company" text={company} />
       </Flex>
     </Box>
   );
