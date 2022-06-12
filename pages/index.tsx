@@ -1,16 +1,38 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
 import { Box, Flex, Heading, Input, Button } from '@chakra-ui/react';
 
+import { Octokit } from '@octokit/core';
+
+const auth = process.env.GH_ACCESS_TOKEN;
+
 export default function Home() {
+  const [query, setQuery] = useState('');
+  const [userResult, setUserResult] = useState({});
+
+  useEffect(() => {
+    if (query.length < 3) return;
+    async function getUser(username) {
+      const octoKit = new Octokit({ auth });
+
+      try {
+        const { data: user } = await octoKit.request('GET /users/{username}', {
+          username,
+        });
+
+        setUserResult(user);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getUser(query);
+  }, [query]);
+
   return (
-    <Box
-      id="app"
-      h="100vh"
-      w="100vw"
-      bgColor="light.ghostWhite"
-      padding="32px 24px"
-    >
+    <Box h="100vh" w="100vw" bgColor="light.ghostWhite" padding="32px 24px">
       <Head>
         <title>GitHub User Search App</title>
         <meta name="description" content="An app to look up GitHub users" />
@@ -34,6 +56,7 @@ export default function Home() {
           paddingLeft="16px"
           paddingRight="8px"
           filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
+          mb="16px"
         >
           <Image
             src="/icon-search.svg"
@@ -46,6 +69,8 @@ export default function Home() {
             border="none"
             _focusVisible={{ border: 'none' }}
             width="calc(100% - 120px)"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
           />
           <Button
             backgroundColor="light.blueCrayola"
@@ -58,7 +83,19 @@ export default function Home() {
           </Button>
         </Flex>
 
-        <div>search</div>
+        <Box>
+          <Flex>
+            {userResult.avatar_url ? (
+              <img
+                src={userResult?.avatar_url}
+                alt="user avatar"
+                width={32}
+                height={32}
+              />
+            ) : null}
+          </Flex>
+        </Box>
+
         <div>user card</div>
       </main>
 
