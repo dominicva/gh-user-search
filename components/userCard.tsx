@@ -1,6 +1,19 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
+
+const formatDate = dateString => {
+  const date = new Date(dateString).toDateString();
+  const arr = date.split(' ');
+
+  const pt1 = arr.slice(1, -1).reverse();
+  const pt2 = arr.at(-1);
+
+  return [...pt1, pt2].join(' ');
+};
+
 const UserCard = ({ user }) => {
+  const dateJoined = formatDate(user.created_at);
+
   return (
     <Box
       padding="32px 24px"
@@ -37,7 +50,7 @@ const UserCard = ({ user }) => {
                 @{user.login}
               </a>
             </Heading>
-            <h4>{new Date(user.created_at).toDateString()}</h4>
+            <h4>Joined {dateJoined}</h4>
           </Box>
         </Flex>
         <Box>
