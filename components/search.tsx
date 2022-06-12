@@ -36,6 +36,7 @@ const Search = ({ onSubmit }) => {
         onChange={handleQueryChange}
       />
       <Button
+        type="submit"
         backgroundColor="light.blueCrayola"
         color="white"
         fontSize="14px"
