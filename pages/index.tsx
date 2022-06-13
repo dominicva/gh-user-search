@@ -34,7 +34,8 @@ function Home() {
   };
 
   const handleSubmit = (username, e) => {
-    e.preventDefault();
+    // ?. – prevents error. Search invokes this once on app init
+    e?.preventDefault();
     getUser(username);
   };
 

@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Flex, Input, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
 const Search = ({ onSubmit, isError }) => {
-  const [query, setQuery] = useState('octokat');
+  const [query, setQuery] = useState('octocat');
+
+  useEffect(() => {
+    onSubmit(query);
+    // empty deps – run once to init octocat as default
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleQueryChange = e => setQuery(e.target.value);
 
