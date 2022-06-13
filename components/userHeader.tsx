@@ -31,14 +31,14 @@ const UserHeader = ({ user }) => {
           as="h4"
           fontSize="14px"
           lineHeight="25px"
-          mb="6px"
+          mb="2px"
           color="light.blueCrayola"
         >
           <a href={`https://github.com/${user.login}`} target="__blank">
             @{user.login}
           </a>
         </Heading>
-        <Heading as="h5" fontSize="14px" lineHeight="25px">
+        <Heading as="h5" fontSize="14px" lineHeight="25px" color="light.gray">
           Joined {dateJoined}
         </Heading>
       </Box>

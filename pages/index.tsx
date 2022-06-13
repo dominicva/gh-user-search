@@ -5,8 +5,19 @@ import Head from 'next/head';
 import { useState } from 'react';
 
 // chakra-ui
-import { Box, Flex, Heading, Text, Icon } from '@chakra-ui/react';
-import { IoMoon } from 'react-icons/io5';
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Icon,
+  useColorMode,
+  useColorModeValue,
+} from '@chakra-ui/react';
+
+// icons
+import { IoMoon, IoSunny } from 'react-icons/io5';
+
 // single instance of GitHub API client
 import octoKit from '../lib/octokit';
 
@@ -17,6 +28,13 @@ import Search from '../components/search';
 function Home() {
   const [displayedUser, setDisplayedUser] = useState({});
   const [isError, setIsError] = useState(false);
+
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg = {
+    app: useColorModeValue('light.ghostWhite', 'dark.oxfordBlue'),
+    mainElements: useColorModeValue('white', 'dark.spaceCadet'),
+  };
+  const color = useColorModeValue('light.queenBlue', 'white');
 
   const getUser = async username => {
     try {
@@ -39,7 +57,7 @@ function Home() {
   };
 
   return (
-    <Box h="100vh" w="100vw" bgColor="light.ghostWhite" padding="32px 24px">
+    <Box h="100vh" w="100vw" bg={bg.app} color={color} padding="32px 24px">
       <Head>
         <title>GitHub User Search App</title>
         <meta name="description" content="An app to look up GitHub users" />
@@ -48,17 +66,28 @@ function Home() {
 
       <main>
         <Flex justify="space-between" mb="36px">
-          <Heading color="light.gunmetal">devfinder</Heading>
+          <Heading fontSize="26px" color="light.gunmetal">
+            devfinder
+          </Heading>
           <Flex
             as="button"
             alignItems="center"
             gap="16px"
-            color="light.queenBlue"
-            _hover={{ color: 'light.gunmetal' }}
+            color={color}
+            _hover={{
+              color: useColorModeValue('light.gunmetal', 'dark.blueYonder'),
+            }}
             aria-label="Toggle Color Mode"
+            onClick={toggleColorMode}
           >
-            <Text>Dark</Text>
-            <Icon as={IoMoon} width={30} height={30} />
+            <Text fontSize="13px" fontWeight="700" letterSpacing="2.5px">
+              {colorMode === 'light' ? 'DARK' : 'LIGHT'}
+            </Text>
+            <Icon
+              as={colorMode === 'light' ? IoMoon : IoSunny}
+              width={30}
+              height={30}
+            />
           </Flex>
         </Flex>
 

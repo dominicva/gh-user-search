@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+  config: {
+    initialColorMode: 'light',
+    useSystemColorMode: true,
+  },
   colors: {
     light: {
       blueCrayola: '#0079FF',
@@ -16,6 +20,7 @@ const theme = extendTheme({
       blueCrayola: '#0079FF',
       white: '#FFFFFF',
       skyBlue: '#60ABFF',
+      blueYonder: '#90A4D4',
       oxfordBlue: '#141D2F',
       spaceCadet: '#1E2A47',
       tartOrange: '#F74646',
