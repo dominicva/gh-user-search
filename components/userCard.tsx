@@ -39,7 +39,7 @@ const UserCard = ({ user }) => {
       <Flex
         position="relative"
         flexDir="column"
-        marginBottom="16px"
+        marginBottom="8px"
         paddingLeft={{ xl: '180px' }}
         paddingRight={{ xl: '24px' }}
       >

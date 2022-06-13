@@ -55,6 +55,9 @@ const UserHeader = ({ user }) => {
           lineHeight="25px"
           fontWeight="400"
           color={useColorModeValue('light.gray', 'white')}
+          position={{ xl: 'absolute' }}
+          top={{ xl: '10px' }}
+          right={{ xl: '24px' }}
         >
           Joined {dateJoined}
         </Heading>

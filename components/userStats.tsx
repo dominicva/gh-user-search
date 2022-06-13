@@ -8,7 +8,7 @@ const UserStats = ({ user }) => {
       textAlign="center"
       paddingY="20px"
       paddingX={['16px', '32px']}
-      mb="24px"
+      mb={{ base: '24px', xl: '32px' }}
       bgColor={useColorModeValue('light.ghostWhite', 'dark.oxfordBlue')}
       borderRadius="10px"
     >

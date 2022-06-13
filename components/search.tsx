@@ -26,7 +26,10 @@ const Search = ({ onSubmit, isError }) => {
   return (
     <Flex
       as="form"
-      onSubmit={e => onSubmit(query, e)}
+      onSubmit={e => {
+        onSubmit(query, e);
+        setQuery('');
+      }}
       alignItems="center"
       justify="space-between"
       height={['60px', '68px']}
@@ -35,7 +38,7 @@ const Search = ({ onSubmit, isError }) => {
       paddingLeft={['8px', '16px']}
       paddingRight={['8px', '10px']}
       filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
-      mb="16px"
+      mb={{ base: '16px', md: '24px' }}
     >
       <InputGroup>
         <InputLeftElement>
@@ -60,12 +63,12 @@ const Search = ({ onSubmit, isError }) => {
         />
       </InputGroup>
       <Text
-        fontSize="13px"
+        fontSize={{ base: '11px', sm: '13px' }}
         fontWeight="700"
         color="light.tartOrange"
-        mx={['4px', '24px']}
+        marginRight={{ base: '4px', sm: '24px' }}
         minW="80px"
-        display={isError ? 'block' : 'none'}
+        display={isError ? 'inline' : 'none'}
       >
         No results
       </Text>
@@ -74,9 +77,8 @@ const Search = ({ onSubmit, isError }) => {
         backgroundColor="light.blueCrayola"
         color="white"
         fontSize="14px"
-        h="46px"
-        width="114px"
-        paddingX={['0px', '52px']}
+        h={{ base: '46px', xl: '50px' }}
+        minWidth={{ base: '84px', sm: '94px', md: '114px' }}
         _hover={{ backgroundColor: 'light.skyBlue' }}
       >
         Search
