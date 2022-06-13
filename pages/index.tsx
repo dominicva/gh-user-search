@@ -17,6 +17,7 @@ import Search from '../components/search';
 
 function Home() {
   const [displayedUser, setDisplayedUser] = useState({});
+  const [isError, setIsError] = useState(false);
 
   const getUser = async username => {
     try {
@@ -25,8 +26,10 @@ function Home() {
       });
 
       setDisplayedUser(user);
+      setIsError(false);
     } catch (error) {
-      console.error(error);
+      setIsError(true);
+      console.error(`Hello, letting you know about this error :)) \n ${error}`);
     }
   };
 
@@ -52,7 +55,7 @@ function Home() {
           </Flex>
         </Flex>
 
-        <Search onSubmit={handleSubmit} />
+        <Search onSubmit={handleSubmit} isError={isError} />
 
         <UserCard user={displayedUser} />
       </main>

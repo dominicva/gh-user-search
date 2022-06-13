@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Button, Flex, Input } from '@chakra-ui/react';
+import { Button, Flex, Input, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
-const Search = ({ onSubmit }) => {
+const Search = ({ onSubmit, isError }) => {
   const [query, setQuery] = useState('octokat');
 
   const handleQueryChange = e => setQuery(e.target.value);
@@ -16,7 +16,7 @@ const Search = ({ onSubmit }) => {
       borderRadius="15px"
       bgColor="white"
       paddingLeft="16px"
-      paddingRight="8px"
+      paddingRight={isError ? '8px' : '0px'}
       filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
       mb="16px"
     >
@@ -35,6 +35,14 @@ const Search = ({ onSubmit }) => {
         value={query}
         onChange={handleQueryChange}
       />
+      <Text
+        fontSize="13px"
+        fontWeight="700"
+        color="light.tartOrange"
+        display={isError ? 'block' : 'none'}
+      >
+        No results
+      </Text>
       <Button
         type="submit"
         backgroundColor="light.blueCrayola"
