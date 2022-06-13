@@ -47,9 +47,13 @@ const UserCard = ({ user }) => {
         <MetaDataRow
           icon="company"
           text={company}
-          linkUrl={`https://github.com/${
-            company?.startsWith('@') ? company.slice(1) : company
-          }`}
+          linkUrl={
+            company
+              ? `https://github.com/${
+                  company.startsWith('@') ? company.slice(1) : company
+                }`
+              : null
+          }
         />
       </Flex>
     </Box>
