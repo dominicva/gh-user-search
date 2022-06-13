@@ -30,6 +30,7 @@ const MetaDataRow = ({
       alignItems="center"
       mb="16px"
       opacity={opacity}
+      _hover={{ textDecoration: 'underline' }}
     >
       <NextImage
         src={`/icon-${icon}.svg`}

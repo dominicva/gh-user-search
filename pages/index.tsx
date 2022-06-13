@@ -1,13 +1,12 @@
 // next.js
 import Head from 'next/head';
-import Image from 'next/image';
 
 // react
 import { useState } from 'react';
 
 // chakra-ui
-import { Box, Flex, Heading } from '@chakra-ui/react';
-
+import { Box, Flex, Heading, Text, Icon } from '@chakra-ui/react';
+import { IoMoon } from 'react-icons/io5';
 // single instance of GitHub API client
 import octoKit from '../lib/octokit';
 
@@ -50,9 +49,16 @@ function Home() {
       <main>
         <Flex justify="space-between" mb="36px">
           <Heading color="light.gunmetal">devfinder</Heading>
-          <Flex alignItems="center" gap="16px" color="light.queenBlue">
-            Dark{' '}
-            <Image src="/moon.svg" alt="moon icon" width={30} height={30} />
+          <Flex
+            as="button"
+            alignItems="center"
+            gap="16px"
+            color="light.queenBlue"
+            _hover={{ color: 'light.gunmetal' }}
+            aria-label="Toggle Color Mode"
+          >
+            <Text>Dark</Text>
+            <Icon as={IoMoon} width={30} height={30} />
           </Flex>
         </Flex>
 
