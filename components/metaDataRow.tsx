@@ -1,5 +1,5 @@
-import NextImage from 'next/image';
-import { Box, Text } from '@chakra-ui/react';
+// import NextImage from 'next/image';
+import { Box, Text, Image, useColorMode } from '@chakra-ui/react';
 import calcGap from '../lib/calcGap';
 
 const MetaDataRow = ({
@@ -10,6 +10,11 @@ const MetaDataRow = ({
 }) => {
   // derived state
   const opacity = text ? 1 : 0.5;
+
+  const { colorMode } = useColorMode();
+
+  const exactIcon =
+    colorMode === 'light' ? `/icon-${icon}.svg` : `/icon-${icon}-dark-mode.svg`;
 
   const displayedText = text ?? 'Not Available';
 
@@ -30,10 +35,13 @@ const MetaDataRow = ({
       alignItems="center"
       mb="16px"
       opacity={opacity}
-      _hover={{ textDecoration: 'underline' }}
+      _hover={{
+        textDecoration:
+          opacity === 1 && icon !== 'location' ? 'underline' : 'none',
+      }}
     >
-      <NextImage
-        src={`/icon-${icon}.svg`}
+      <Image
+        src={exactIcon}
         alt={`${icon} icon`}
         width={iconDimensions.width}
         height={iconDimensions.height}
