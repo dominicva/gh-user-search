@@ -30,10 +30,7 @@ function Home() {
   const [isError, setIsError] = useState(false);
 
   const { colorMode, toggleColorMode } = useColorMode();
-  const bg = {
-    app: useColorModeValue('light.ghostWhite', 'dark.oxfordBlue'),
-    mainElements: useColorModeValue('white', 'dark.spaceCadet'),
-  };
+  const bg = useColorModeValue('light.ghostWhite', 'dark.oxfordBlue');
   const color = useColorModeValue('light.queenBlue', 'white');
 
   const getUser = async username => {
@@ -60,7 +57,7 @@ function Home() {
     <Box
       h="100vh"
       w="100vw"
-      bg={bg.app}
+      bg={bg}
       color={color}
       padding="32px 24px"
       overflow="scroll"

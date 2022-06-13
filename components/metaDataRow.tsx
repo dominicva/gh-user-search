@@ -25,7 +25,7 @@ const MetaDataRow = ({
   const gap = calcGap(iconDimensions.width);
 
   const innerText = linkUrl ? (
-    <a href={linkUrl} target="__blank">
+    <a href={linkUrl} target="__blank" rel="noopener noreferrer">
       {displayedText}
     </a>
   ) : (
@@ -37,7 +37,7 @@ const MetaDataRow = ({
       display="flex"
       gap={gap}
       alignItems="center"
-      mb="16px"
+      mb={['16px', , '20px']}
       opacity={opacity}
       _hover={{
         textDecoration:
@@ -50,7 +50,7 @@ const MetaDataRow = ({
         width={iconDimensions.width}
         height={iconDimensions.height}
       />
-      <Text maxW="calc(100% - 80px)">{innerText}</Text>
+      <Text maxW={['calc(100% - 80px)', , 'unset']}>{innerText}</Text>
     </Box>
   );
 };

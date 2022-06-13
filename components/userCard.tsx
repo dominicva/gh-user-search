@@ -41,34 +41,40 @@ const UserCard = ({ user }) => {
 
         <UserStats user={user} />
 
-        <MetaDataRow
-          icon="location"
-          iconDimensions={{ width: '14px', height: '20px' }}
-          text={location}
-        />
+        <Flex flexDir={['column', , 'row']} gap={{ md: '60px' }}>
+          <Box>
+            <MetaDataRow
+              icon="location"
+              iconDimensions={{ width: '14px', height: '20px' }}
+              text={location}
+            />
+            <MetaDataRow icon="website" text={blog} linkUrl={blog ?? null} />
+          </Box>
+          <Box>
+            <MetaDataRow
+              icon="twitter"
+              iconDimensions={{ width: '20px', height: '16px' }}
+              text={twitterUsername}
+              linkUrl={
+                twitterUsername
+                  ? `https://twitter.com/${twitterUsername}`
+                  : null
+              }
+            />
 
-        <MetaDataRow icon="website" text={blog} linkUrl={blog ?? null} />
-
-        <MetaDataRow
-          icon="twitter"
-          iconDimensions={{ width: '20px', height: '16px' }}
-          text={twitterUsername}
-          linkUrl={
-            twitterUsername ? `https://twitter.com/${twitterUsername}` : null
-          }
-        />
-
-        <MetaDataRow
-          icon="company"
-          text={company}
-          linkUrl={
-            company
-              ? `https://github.com/${
-                  company.startsWith('@') ? company.slice(1) : company
-                }`
-              : null
-          }
-        />
+            <MetaDataRow
+              icon="company"
+              text={company}
+              linkUrl={
+                company
+                  ? `https://github.com/${
+                      company.startsWith('@') ? company.slice(1) : company
+                    }`
+                  : null
+              }
+            />
+          </Box>
+        </Flex>
       </Flex>
     </Box>
   );
