@@ -68,7 +68,7 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main style={{ maxWidth: '574px', margin: 'auto' }}>
+      <Box as="main" maxWidth={{ base: '574px', xl: '730px' }} margin="auto">
         <Flex justify="space-between" mb="36px">
           <Heading
             fontSize="26px"
@@ -101,7 +101,7 @@ function Home() {
         <Search onSubmit={handleSubmit} isError={isError} />
 
         <UserCard user={displayedUser} />
-      </main>
+      </Box>
     </Box>
   );
 }

@@ -8,7 +8,11 @@ const UserHeader = ({ user }) => {
   const dateJoined = formatDate(user.created_at);
 
   return (
-    <Flex gap={['20px', '40px']} mb={['32px', '24px']} mt={['0', '8px']}>
+    <Flex
+      gap={{ base: '20px', md: '40px', xl: '0' }}
+      mb={['32px', '24px']}
+      mt={['0', '8px']}
+    >
       <Box>
         {user.avatar_url ? (
           <Image
@@ -17,6 +21,9 @@ const UserHeader = ({ user }) => {
             width={['80px', '116px']}
             height={['80px', '116px']}
             borderRadius="50%"
+            position={{ xl: 'absolute' }}
+            top="3px"
+            left="20px"
           />
         ) : null}
       </Box>

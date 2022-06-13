@@ -30,12 +30,19 @@ const UserCard = ({ user }) => {
   return (
     <Box
       padding="32px 24px"
+      paddingTop={{ xl: '48px' }}
       position="relative"
       bg={useColorModeValue('white', 'dark.spaceCadet')}
       borderRadius="15px"
       filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
     >
-      <Flex flexDir="column" marginBottom="16px">
+      <Flex
+        position="relative"
+        flexDir="column"
+        marginBottom="16px"
+        paddingLeft={{ xl: '180px' }}
+        paddingRight={{ xl: '24px' }}
+      >
         <UserHeader user={user} />
         <Box>{userBio}</Box>
 
