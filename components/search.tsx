@@ -1,6 +1,3 @@
-// next.js
-import Image from 'next/image';
-
 // react
 import { useState, useEffect } from 'react';
 
@@ -12,6 +9,7 @@ import {
   InputGroup,
   InputLeftElement,
   Text,
+  Image,
   useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -51,6 +49,7 @@ const Search = ({ onSubmit, isError }) => {
         </InputLeftElement>
         <Input
           placeholder="Search GitHub username..."
+          marginLeft={['4px', '16px']}
           _placeholder={{
             color: useColorModeValue('light.queenBlue', 'white'),
           }}

@@ -3,9 +3,11 @@ import { Box, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 const UserStats = ({ user }) => {
   return (
     <Flex
-      justifyContent="space-around"
+      justifyContent={['space-around', 'flex-start']}
+      gap={[0, '80px']}
       textAlign="center"
-      padding="20px 16px"
+      paddingY="20px"
+      paddingX={['16px', '32px']}
       mb="24px"
       bgColor={useColorModeValue('light.ghostWhite', 'dark.oxfordBlue')}
       borderRadius="10px"
@@ -14,7 +16,7 @@ const UserStats = ({ user }) => {
         <Text fontSize="13px" mb="6px">
           Repos
         </Text>
-        <Text fontSize="16px" fontWeight="bold">
+        <Text fontSize="16px" fontWeight="bold" textAlign={['center', 'left']}>
           {user.public_repos}
         </Text>
       </Box>
@@ -22,7 +24,7 @@ const UserStats = ({ user }) => {
         <Text fontSize="13px" mb="6px">
           Followers
         </Text>
-        <Text fontSize="16px" fontWeight="bold">
+        <Text fontSize="16px" fontWeight="bold" textAlign={['center', 'left']}>
           {user.followers}
         </Text>
       </Box>
@@ -30,7 +32,7 @@ const UserStats = ({ user }) => {
         <Text fontSize="13px" mb="6px">
           Following
         </Text>
-        <Text fontSize="16px" fontWeight="bold">
+        <Text fontSize="16px" fontWeight="bold" textAlign={['center', 'left']}>
           {user.following}
         </Text>
       </Box>

@@ -8,14 +8,14 @@ const UserHeader = ({ user }) => {
   const dateJoined = formatDate(user.created_at);
 
   return (
-    <Flex gap={['20px', '40px']} mb="32px">
+    <Flex gap={['20px', '40px']} mb={['32px', '24px']} mt={['0', '8px']}>
       <Box>
         {user.avatar_url ? (
           <Image
             src={user.avatar_url}
             alt="user avatar"
-            width="80px"
-            height="80px"
+            width={['80px', '116px']}
+            height={['80px', '116px']}
             borderRadius="50%"
           />
         ) : null}
@@ -34,7 +34,8 @@ const UserHeader = ({ user }) => {
           as="h4"
           fontSize={['13px', '16px']}
           lineHeight="25px"
-          mb="2px"
+          mt={['1px', '3px']}
+          mb={['3px', '5px']}
           color="light.blueCrayola"
         >
           <a href={`https://github.com/${user.login}`} target="__blank">

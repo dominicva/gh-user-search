@@ -13,11 +13,16 @@ const UserCard = ({ user }) => {
   const { location, blog, twitterUsername, company } = cleanUserMetaData(user);
 
   const userBio = user.bio ? (
-    <Text fontSize="14px" lineHeight="25px" mb="24px">
+    <Text fontSize={['13px', '15px']} lineHeight="25px" mb={['24px', '32px']}>
       {user.bio}
     </Text>
   ) : (
-    <Text fontSize="14px" lineHeight="25px" mb="24px" opacity="0.5">
+    <Text
+      fontSize={['13px', '15px']}
+      lineHeight="25px"
+      mb={['24px', '32px']}
+      opacity="0.5"
+    >
       This profile has no bio.
     </Text>
   );
