@@ -5,12 +5,23 @@ import calcGap from '../lib/calcGap';
 const MetaDataRow = ({
   icon,
   iconDimensions = { width: '20px', height: '20px' },
-  text,
+  text = null,
+  linkUrl = null,
 }) => {
+  // derived state
   const opacity = text ? 1 : 0.5;
+
   const displayedText = text ?? 'Not Available';
 
   const gap = calcGap(iconDimensions.width);
+
+  const innerText = linkUrl ? (
+    <a href={linkUrl} target="__blank">
+      {displayedText}
+    </a>
+  ) : (
+    displayedText
+  );
 
   return (
     <Box
@@ -26,7 +37,7 @@ const MetaDataRow = ({
         width={iconDimensions.width}
         height={iconDimensions.height}
       />
-      <Text maxW="calc(100% - 80px)">{displayedText}</Text>
+      <Text maxW="calc(100% - 80px)">{innerText}</Text>
     </Box>
   );
 };

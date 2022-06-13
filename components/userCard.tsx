@@ -35,13 +35,20 @@ const UserCard = ({ user }) => {
           iconDimensions={{ width: '14px', height: '20px' }}
           text={location}
         />
-        <MetaDataRow icon="website" text={blog} />
+        <MetaDataRow icon="website" text={blog} linkUrl={blog ?? null} />
         <MetaDataRow
           icon="twitter"
           iconDimensions={{ width: '20px', height: '16px' }}
           text={twitterUsername}
+          linkUrl={
+            twitterUsername ? `https://twitter.com/${twitterUsername}` : null
+          }
         />
-        <MetaDataRow icon="company" text={company} />
+        <MetaDataRow
+          icon="company"
+          text={company}
+          linkUrl={company ? `https://github.com/${company.slice(1)}` : null}
+        />
       </Flex>
     </Box>
   );
