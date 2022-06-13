@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Button, Flex, Input, Text } from '@chakra-ui/react';
+import { Button, Flex, Input, Text, useColorModeValue } from '@chakra-ui/react';
 import Image from 'next/image';
 
 const Search = ({ onSubmit, isError }) => {
-  const [query, setQuery] = useState('octocat');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    onSubmit(query);
+    onSubmit('octocat');
     // empty deps – run once to init octocat as default
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -19,7 +19,7 @@ const Search = ({ onSubmit, isError }) => {
       alignItems="center"
       height="60px"
       borderRadius="15px"
-      bgColor="white"
+      bg={useColorModeValue('white', 'dark.spaceCadet')}
       paddingLeft="16px"
       paddingRight={isError ? '8px' : '0px'}
       filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
@@ -34,6 +34,7 @@ const Search = ({ onSubmit, isError }) => {
       />
       <Input
         placeholder="Search GitHub username..."
+        _placeholder={{ color: useColorModeValue('light.queenBlue', 'white') }}
         border="none"
         _focusVisible={{ border: 'none' }}
         width="calc(100% - 120px)"

@@ -66,7 +66,10 @@ function Home() {
 
       <main>
         <Flex justify="space-between" mb="36px">
-          <Heading fontSize="26px" color="light.gunmetal">
+          <Heading
+            fontSize="26px"
+            color={useColorModeValue('light.gunmetal', 'white')}
+          >
             devfinder
           </Heading>
           <Flex
