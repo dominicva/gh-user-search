@@ -1,4 +1,4 @@
-const cleanUserMetData = user => {
+const cleanUserMetaData = user => {
   const userMetaData = {
     location: user.location || null,
     blog: user.blog || null,
@@ -16,4 +16,4 @@ const cleanUserMetData = user => {
   };
 };
 
-export default cleanUserMetData;
+export default cleanUserMetaData;

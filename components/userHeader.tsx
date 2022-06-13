@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Heading } from '@chakra-ui/react';
+import { Box, Flex, Image, Heading, useColorModeValue } from '@chakra-ui/react';
 import formatDate from '../lib/formatDate';
 
 const UserHeader = ({ user }) => {
@@ -23,7 +23,7 @@ const UserHeader = ({ user }) => {
           as="h3"
           fontSize="18px"
           fontWeight="700"
-          color="light.gunmetal"
+          color={useColorModeValue('light.gunmetal', 'white')}
         >
           {user.name}
         </Heading>
@@ -38,7 +38,12 @@ const UserHeader = ({ user }) => {
             @{user.login}
           </a>
         </Heading>
-        <Heading as="h5" fontSize="14px" lineHeight="25px" color="light.gray">
+        <Heading
+          as="h5"
+          fontSize="14px"
+          lineHeight="25px"
+          color={useColorModeValue('light.gray', 'white')}
+        >
           Joined {dateJoined}
         </Heading>
       </Box>

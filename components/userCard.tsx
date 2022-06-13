@@ -1,5 +1,5 @@
 // chakra-ui
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 
 // project components
 import UserHeader from './userHeader';
@@ -7,10 +7,10 @@ import UserStats from './userStats';
 import MetaDataRow from './metaDataRow';
 
 // helper(s) from lib dir
-import cleanUserMetData from '../lib/cleanUserMetaData';
+import cleanUserMetaData from '../lib/cleanUserMetaData';
 
 const UserCard = ({ user }) => {
-  const { location, blog, twitterUsername, company } = cleanUserMetData(user);
+  const { location, blog, twitterUsername, company } = cleanUserMetaData(user);
 
   const userBio = user.bio ? (
     <Text fontSize="14px" lineHeight="25px" mb="24px">
@@ -26,7 +26,7 @@ const UserCard = ({ user }) => {
     <Box
       padding="32px 24px"
       position="relative"
-      bgColor="white"
+      bg={useColorModeValue('white', 'dark.spaceCadet')}
       borderRadius="15px"
       filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
     >
