@@ -1,6 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Button, Flex, Input, Text, useColorModeValue } from '@chakra-ui/react';
+// next.js
 import Image from 'next/image';
+
+// react
+import { useState, useEffect } from 'react';
+
+// chakra-ui
+import { Button, Flex, Input, Text, useColorModeValue } from '@chakra-ui/react';
 
 const Search = ({ onSubmit, isError }) => {
   const [query, setQuery] = useState('');

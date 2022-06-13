@@ -1,5 +1,7 @@
-// import NextImage from 'next/image';
+//chakr-ui
 import { Box, Text, Image, useColorMode } from '@chakra-ui/react';
+
+// helper from lib dir
 import calcGap from '../lib/calcGap';
 
 const MetaDataRow = ({
@@ -8,16 +10,18 @@ const MetaDataRow = ({
   text = null,
   linkUrl = null,
 }) => {
+  const { colorMode } = useColorMode();
+
   // derived state
   const opacity = text ? 1 : 0.5;
 
-  const { colorMode } = useColorMode();
-
+  // different svgs for light / dark mode
   const exactIcon =
     colorMode === 'light' ? `/icon-${icon}.svg` : `/icon-${icon}-dark-mode.svg`;
 
   const displayedText = text ?? 'Not Available';
 
+  // consistent space between icon and text
   const gap = calcGap(iconDimensions.width);
 
   const innerText = linkUrl ? (

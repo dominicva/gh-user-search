@@ -1,4 +1,7 @@
+// chakra-ui
 import { Box, Flex, Image, Heading, useColorModeValue } from '@chakra-ui/react';
+
+// helper from lib dir
 import formatDate from '../lib/formatDate';
 
 const UserHeader = ({ user }) => {

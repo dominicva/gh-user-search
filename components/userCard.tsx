@@ -41,7 +41,9 @@ const UserCard = ({ user }) => {
           iconDimensions={{ width: '14px', height: '20px' }}
           text={location}
         />
+
         <MetaDataRow icon="website" text={blog} linkUrl={blog ?? null} />
+
         <MetaDataRow
           icon="twitter"
           iconDimensions={{ width: '20px', height: '16px' }}
@@ -50,6 +52,7 @@ const UserCard = ({ user }) => {
             twitterUsername ? `https://twitter.com/${twitterUsername}` : null
           }
         />
+
         <MetaDataRow
           icon="company"
           text={company}
