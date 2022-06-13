@@ -12,6 +12,16 @@ import cleanUserMetData from '../lib/cleanUserMetaData';
 const UserCard = ({ user }) => {
   const { location, blog, twitterUsername, company } = cleanUserMetData(user);
 
+  const userBio = user.bio ? (
+    <Text fontSize="14px" lineHeight="25px" mb="24px">
+      {user.bio}
+    </Text>
+  ) : (
+    <Text fontSize="14px" lineHeight="25px" mb="24px" opacity="0.5">
+      This profile has no bio.
+    </Text>
+  );
+
   return (
     <Box
       padding="32px 24px"
@@ -20,13 +30,9 @@ const UserCard = ({ user }) => {
       borderRadius="15px"
       filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
     >
-      <Flex flexDir="column">
+      <Flex flexDir="column" marginBottom="16px">
         <UserHeader user={user} />
-        <Box>
-          <Text fontSize="14px" lineHeight="25px" mb="24px">
-            {user.bio}
-          </Text>
-        </Box>
+        <Box>{userBio}</Box>
 
         <UserStats user={user} />
 

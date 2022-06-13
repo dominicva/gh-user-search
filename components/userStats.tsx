@@ -5,7 +5,7 @@ const UserStats = ({ user }) => {
     <Flex
       justifyContent="space-around"
       textAlign="center"
-      padding="18px 16px"
+      padding="20px 16px"
       mb="24px"
       bgColor="light.ghostWhite"
       borderRadius="10px"
