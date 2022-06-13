@@ -50,7 +50,9 @@ const MetaDataRow = ({
         width={iconDimensions.width}
         height={iconDimensions.height}
       />
-      <Text maxW={['calc(100% - 80px)', , 'unset']}>{innerText}</Text>
+      <Text fontSize="15px" maxW="100%" wordBreak="break-word">
+        {innerText}
+      </Text>
     </Box>
   );
 };
