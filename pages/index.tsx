@@ -57,14 +57,21 @@ function Home() {
   };
 
   return (
-    <Box h="100vh" w="100vw" bg={bg.app} color={color} padding="32px 24px">
+    <Box
+      h="100vh"
+      w="100vw"
+      bg={bg.app}
+      color={color}
+      padding="32px 24px"
+      overflow="scroll"
+    >
       <Head>
         <title>GitHub User Search App</title>
         <meta name="description" content="An app to look up GitHub users" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main style={{ maxWidth: '574px', margin: 'auto' }}>
         <Flex justify="space-between" mb="36px">
           <Heading
             fontSize="26px"

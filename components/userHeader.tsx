@@ -8,7 +8,7 @@ const UserHeader = ({ user }) => {
   const dateJoined = formatDate(user.created_at);
 
   return (
-    <Flex gap="20px" mb="32px">
+    <Flex gap={['20px', '40px']} mb="32px">
       <Box>
         {user.avatar_url ? (
           <Image
@@ -24,7 +24,7 @@ const UserHeader = ({ user }) => {
       <Box>
         <Heading
           as="h3"
-          fontSize="18px"
+          fontSize={['18px', '26px']}
           fontWeight="700"
           color={useColorModeValue('light.gunmetal', 'white')}
         >
@@ -32,7 +32,7 @@ const UserHeader = ({ user }) => {
         </Heading>
         <Heading
           as="h4"
-          fontSize="14px"
+          fontSize={['13px', '16px']}
           lineHeight="25px"
           mb="2px"
           color="light.blueCrayola"
@@ -43,8 +43,9 @@ const UserHeader = ({ user }) => {
         </Heading>
         <Heading
           as="h5"
-          fontSize="14px"
+          fontSize={['13px', '15px']}
           lineHeight="25px"
+          fontWeight="400"
           color={useColorModeValue('light.gray', 'white')}
         >
           Joined {dateJoined}

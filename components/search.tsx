@@ -5,7 +5,15 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 // chakra-ui
-import { Button, Flex, Input, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Button,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 const Search = ({ onSubmit, isError }) => {
   const [query, setQuery] = useState('');
@@ -22,34 +30,42 @@ const Search = ({ onSubmit, isError }) => {
       as="form"
       onSubmit={e => onSubmit(query, e)}
       alignItems="center"
-      height="60px"
+      justify="space-between"
+      height={['60px', '68px']}
       borderRadius="15px"
       bg={useColorModeValue('white', 'dark.spaceCadet')}
-      paddingLeft="16px"
-      paddingRight={isError ? '8px' : '0px'}
+      paddingLeft={['8px', '16px']}
+      paddingRight={['8px', '10px']}
       filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
       mb="16px"
     >
-      <Image
-        src="/icon-search.svg"
-        alt="search icon"
-        width={25}
-        height={25}
-        color="light.blueCrayola"
-      />
-      <Input
-        placeholder="Search GitHub username..."
-        _placeholder={{ color: useColorModeValue('light.queenBlue', 'white') }}
-        border="none"
-        _focusVisible={{ border: 'none' }}
-        width="calc(100% - 120px)"
-        value={query}
-        onChange={handleQueryChange}
-      />
+      <InputGroup>
+        <InputLeftElement>
+          <Image
+            src="/icon-search.svg"
+            alt="search icon"
+            width={25}
+            height={25}
+            color="light.blueCrayola"
+          />
+        </InputLeftElement>
+        <Input
+          placeholder="Search GitHub username..."
+          _placeholder={{
+            color: useColorModeValue('light.queenBlue', 'white'),
+          }}
+          border="none"
+          _focusVisible={{ border: 'none' }}
+          value={query}
+          onChange={handleQueryChange}
+        />
+      </InputGroup>
       <Text
         fontSize="13px"
         fontWeight="700"
         color="light.tartOrange"
+        mx={['4px', '24px']}
+        minW="80px"
         display={isError ? 'block' : 'none'}
       >
         No results
@@ -60,7 +76,8 @@ const Search = ({ onSubmit, isError }) => {
         color="white"
         fontSize="14px"
         h="46px"
-        width="84px"
+        width="114px"
+        paddingX={['0px', '52px']}
         _hover={{ backgroundColor: 'light.skyBlue' }}
       >
         Search
